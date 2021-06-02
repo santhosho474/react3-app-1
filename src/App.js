@@ -1,5 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import {
+  Button,
+  Form,
+  FormControl,
+  Nav,
+  Navbar,
+  NavDropdown,
+} from "react-bootstrap";
+import { Page1 } from "./pages/page1";
+import { Page2 } from "./pages/page2";
+import { Page3 } from "./pages/page3";
+
 
 function App() {
   return (
