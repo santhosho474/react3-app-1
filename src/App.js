@@ -3,22 +3,50 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <Router>
+      {/** NAVIGATION LOGIC */}
+      <Navbar bg="dark" expand="lg" variant="dark">
+        <Navbar.Brand as={Link} to="/">
+          Project Book
+        </Navbar.Brand>
+
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ml-auto">
+            <Nav.Link as={Link} to="/page1">
+              Page1
+            </Nav.Link>
+
+            <Nav.Link as={Link} to="/page2">
+              Page2
+            </Nav.Link>
+
+            <Nav.Link as={Link} to="/page3">
+              Page3
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+
+      <Switch>
+        <Route path="/page1">
+          <Page1 />
+        </Route>
+
+        <Route path="/page2">
+          <Page2 />
+        </Route>
+
+        <Route path="/page3">
+          <Page3 />
+        </Route>
+
+        <Route path="/">
+          <Page1 />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
