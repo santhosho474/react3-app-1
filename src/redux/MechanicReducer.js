@@ -22,7 +22,7 @@ export function createMechanicAction(payload) {
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
     const url = "http://localhost:8080/api/mechanics/";
-    const requestBody = { ...payload, age: 30 };
+    const requestBody = { ...payload};
 
     // HTTP Client
     await fetch(url, {
@@ -40,8 +40,8 @@ export function updateMechanicAction(payload) {
   // return { type: EMPLOYEE_UPDATE, payload: payload };
   return async (dispatch) => {
     // WE HV TO CALL THE SPRINT1 / SPRING BOOT
-    const url = `http://localhost:8080/api/mechanics/${payload.id}`;
-    const requestBody = { ...payload, age: 25 };
+    const url = `http://localhost:8080/api/mechanics/${payload.mechanicsId}`;
+    const requestBody = { ...payload};
 
     await fetch(url, {
       method: "PUT",
@@ -59,7 +59,7 @@ export function deleteMechanicAction(payload) {
 
   // redux thunk
   return async (dispatch) => {
-    const url = `http://localhost:8080/api/mechanic/${payload.id}`;
+    const url = `http://localhost:8080/api/mechanics/${payload.mechanicsId}`;
     await fetch(url, { method: "DELETE" });
 
     // update the ui.
@@ -88,7 +88,7 @@ export function getAllMechanicAction(payload) {
 export function getByIdMechanicAction(payload) {
   // return { type: EMPLOYEE_GET_BY_ID, payload: payload };
   return async (dispatch) => {
-    const url = `http://localhost:8080/api/mechanics/${payload.id}`;
+    const url = `http://localhost:8080/api/mechanics/${payload.mechanicsId}`;
     const response = await fetch(url);
     const mechanicObj = await response.json();
 
