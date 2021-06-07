@@ -1,8 +1,8 @@
 import logo from "./logo.svg";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import { EmployeeUpsert } from "./components/MechanicUpsert";
-import { EmployeeList } from "./components/MechanicList";
+import { MechanicUpsert } from "./components/MechanicUpsert";
+import { MechanicList } from "./components/MechanicList";
 import { AppNavBar } from "./common/AppNavBar";
 
 function App() {
@@ -12,15 +12,15 @@ function App() {
 
       <Switch>
         <Route path="/create-mechanic">
-          <EmployeeUpsert />
+          <MechanicUpsert />
         </Route>
 
         <Route path="/list-mechanic">
-          <EmployeeList />
+          <MechanicList />
         </Route>
 
         <Route exact path="/">
-          <EmployeeList />
+          <MechanicList />
         </Route>
       </Switch>
     </Router>

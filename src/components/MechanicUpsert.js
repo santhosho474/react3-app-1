@@ -70,7 +70,7 @@ export function MechanicUpsert() {
       <div className="col-3 col-md-3 d-none d-md-block"></div>
       <div className="col-12 col-md-6">
         <h3 className="alert alert-secondary">
-          {state.employee.refmec.mechanicsId ? "Update Mechanic" : "Create Mechanic"}
+          {state.employee.refmec.mechanicsName ? "Update Mechanic" : "Create Mechanic"}
         </h3>
 
         {/** BELOW THESE TWO TAGS MUST BE CONDITIOANL */}
@@ -109,7 +109,7 @@ export function MechanicUpsert() {
         </div>
 
         <div className="mb-1">
-          {state.employee.refmec.mechanicsId ? (
+          {state.employee.refmec.mechanicsName ? (
             <input
               type="button"
               className="btn btn-secondary w-100"

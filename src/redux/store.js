@@ -3,7 +3,7 @@ import { applyMiddleware } from "redux";
 import { createStore } from "redux";
 import thunk from "redux-thunk";
 
-import { MechanicReducer } from "./EmpoyeeReducer";
+import { MechanicReducer } from "./MechanicReducer";
 
 const rootReducer = combineReducers({
   employee: MechanicReducer,

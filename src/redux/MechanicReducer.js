@@ -81,7 +81,7 @@ export function getAllMechanicAction(payload) {
     console.log(mechanicList);
 
     // Update the UI
-    dispatch({ type: EMPLOYEE_GET_ALL, payload: mechanicList });
+    dispatch({ type: MECHANIC_GET_ALL, payload: mechanicList });
   };
 }
 

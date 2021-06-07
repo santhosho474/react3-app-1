@@ -7,7 +7,6 @@ import {
   getByIdMechanicAction,
   updateRefMechanic
 } from "../redux/MechanicReducer";
-import { MechanicModal } from "./MechanicModal";
 
 export function MechanicList() {
   const state = useSelector((state) => state);
@@ -34,7 +33,7 @@ export function MechanicList() {
     dispatch(updateRefMechanic(item));
 
     // form page
-    history.push("/create-employee");
+    history.push("/create-mechanic");
   };
 
   const getMechanicById = (item) => {
@@ -56,21 +55,21 @@ export function MechanicList() {
             <thead className="thead-dark">
               <tr>
                 <th scope="col">#ID</th>
-                <th scope="col">USERNAME</th>
-                <th scope="col">PASSWORD</th>
-                <th scope="col">EMAIL</th>
+                <th scope="col">NAME</th>
                 <th scope="col">MOBILE</th>
+                <th scope="col">AGE</th>
+                <th scope="col">JOINING DATE</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
               {[...state.employee.list].map((item, index) => (
                 <tr key={index}>
-                  <th scope="row">{item.id}</th>
-                  <td>{item.userName}</td>
-                  <td>{"********"}</td>
-                  <td>{"****@gmail.com"}</td>
-                  <td>{item.mobile}</td>
+                  <th scope="row">{item.mechanicsId}</th>
+                  <td>{item.mechanicsName}</td>
+                  <td>{item.mechanicsMobile}</td>
+                  <td>{item.mechanicsAge}</td>
+                  <td>{item.joiningDate}</td>
                   <td>
                     <input
                       type="button"
@@ -100,9 +99,6 @@ export function MechanicList() {
         </div>
         <div className="col-3 col-md-2 d-none d-md-block"></div>
       </div>
-
-      {/** EMPLOYEE MODAL */}
-      <MechanicModal />
     </>
   );
 }
