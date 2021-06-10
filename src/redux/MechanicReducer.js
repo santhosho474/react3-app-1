@@ -1,8 +1,7 @@
 const initState = {
   list: [],
-
   refmec: {},
-  sampleList: ["Delhi", "Kolkata", "Chennai", "Mumbai"],
+  error:false,
 };
 
 // ACTION TYPES
@@ -11,7 +10,7 @@ const MECHANIC_UPDATE = "MECHANIC_UPDATE";
 const MECHANIC_DELETE = "MECHANIC_DELETE";
 const MECHANIC_GET_ALL = "MECHANIC_GET_ALL";
 const MECHANIC_GET_BY_ID = "MECHANIC_GET_BY_ID";
-
+const SERVER_ERROR="SERVER_ERROR";
 const REF_MECHANIC = "REF_MECHANIC";
 
 // ACTIONS :: COmponents are interacting with this action
@@ -20,26 +19,31 @@ export function createMechanicAction(payload) {
 
   // MAKE SURE redux-thunk is installed.
   return async (dispatch) => {
-    // WE HV TO CALL THE SPRINT1 / SPRING BOOT
+    try{
     const url = "http://localhost:8080/api/mechanics/";
     const requestBody = { ...payload};
 
     // HTTP Client
-    await fetch(url, {
+    const response=await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),
     });
-
-    // UPDATE THE UI
+    const mecObj=await response.json();
+    if(mecObj){
+      console.log(mecObj.message);
+    }
     dispatch({ type: MECHANIC_CREATE, payload: payload });
+  }catch(error){
+    console.log(error);
+    dispatch({type:SERVER_ERROR,payload:true});
+  }
   };
 }
 
 export function updateMechanicAction(payload) {
-  // return { type: EMPLOYEE_UPDATE, payload: payload };
   return async (dispatch) => {
-    // WE HV TO CALL THE SPRINT1 / SPRING BOOT
+    try{
     const url = `http://localhost:8080/api/mechanics/${payload.mechanicsId}`;
     const requestBody = { ...payload};
 
@@ -51,6 +55,10 @@ export function updateMechanicAction(payload) {
 
     // update the ui.
     dispatch(updateRefMechanic({}));
+  }catch(error){
+    console.log(error);
+    dispatch({type:SERVER_ERROR,action:true});
+  }
   };
 }
 
@@ -124,8 +132,9 @@ export function MechanicReducer(state = initState, action) {
       return state;
 
     case REF_MECHANIC:
-      return { ...state, refemp: action.payload };
-
+      return { ...state, refmec: action.payload };
+    case SERVER_ERROR:
+      return{...state,error:action.payload};
     default:
       return state;
   }

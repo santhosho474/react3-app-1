@@ -6,7 +6,7 @@ import thunk from "redux-thunk";
 import { MechanicReducer } from "./MechanicReducer";
 
 const rootReducer = combineReducers({
-  employee: MechanicReducer,
+  mechanic: MechanicReducer,
 });
 
 // const store = createStore(rootReducer);

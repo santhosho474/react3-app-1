@@ -20,7 +20,6 @@ function App() {
         </Route>
 
         <Route exact path="/">
-          <MechanicList />
         </Route>
       </Switch>
     </Router>

@@ -21,7 +21,7 @@ export function MechanicList() {
     dispatch(getAllMechanicAction());
   }, []);
 
-  const deleteMechanic = (item, index) => {
+  const deleteMechanic = (item) => {
     dispatch(deleteMechanicAction(item));
 
     setSuccessOperation(true);
@@ -31,21 +31,23 @@ export function MechanicList() {
   const updateMechanic = (item) => {
     // we are doing this so that we can access this objec in the form page
     dispatch(updateRefMechanic(item));
-
+    console.log(item);
     // form page
     history.push("/create-mechanic");
   };
 
   const getMechanicById = (item) => {
+    console.log(item);
     dispatch(getByIdMechanicAction(item));
   };
+  console.log(state.mechanic.list[0]);
 
   return (
     <>
       <div className="row">
         <div className="col-3 col-md-2 d-none d-md-block"></div>
         <div className="col-12 col-md-8">
-          <h3 className="alert alert-secondary">Employee List</h3>
+          <h3 className="alert alert-danger">Mechanics List</h3>
 
           {successOperation && (
             <div className="alert alert-success">Opeation Success</div>
@@ -63,7 +65,7 @@ export function MechanicList() {
               </tr>
             </thead>
             <tbody>
-              {[...state.employee.list].map((item, index) => (
+              {[...state.mechanic.list].map((item, index) => (
                 <tr key={index}>
                   <th scope="row">{item.mechanicsId}</th>
                   <td>{item.mechanicsName}</td>
@@ -71,13 +73,6 @@ export function MechanicList() {
                   <td>{item.mechanicsAge}</td>
                   <td>{item.joiningDate}</td>
                   <td>
-                    <input
-                      type="button"
-                      onClick={() => getMechanicById(item)}
-                      value="Detail"
-                      className="btn btn-link"
-                    />
-                    /
                     <input
                       type="button"
                       onClick={() => updateMechanic(item)}
@@ -88,7 +83,7 @@ export function MechanicList() {
                     <input
                       type="button"
                       value="Delete"
-                      onClick={() => deleteMechanic(item, index)}
+                      onClick={() => deleteMechanic(item)}
                       className="btn btn-link text-danger"
                     />
                   </td>
