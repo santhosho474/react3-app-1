@@ -110,7 +110,7 @@ export function MechanicUpsert() {
     <div className="row">
       <div className="col-3 col-md-3 d-none d-md-block"></div>
       <div className="col-12 col-md-6">
-        <h3 className="alert alert-danger">
+        <h3 className="alert alert-warning">
           {state.mechanic.refmec.mechanicsId ? "Update Mechanic" : "Create Mechanic"}
         </h3>
 
