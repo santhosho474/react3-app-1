@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import {
   createMechanicAction,
   updateMechanicAction,
@@ -8,6 +9,7 @@ import {
 export function MechanicUpsert() {
   const dispatch = useDispatch();
   const formEL=useRef();
+  const history=useHistory()
   const state = useSelector((state) => state);
   const [mechanicsName, setMechanicsName] = useState(state.mechanic.refmec.mechanicsName);
   const [mechanicsAge, setMechanicsAge] = useState(state.mechanic.refmec.mechanicsAge);
@@ -97,6 +99,9 @@ export function MechanicUpsert() {
     console.log(mechanicsName, mechanicsAge, mechanicsMobile);
     setSuccessOperation(true);
     setTimeout(() => setSuccessOperation(false), 2000);
+    if(state.mechanic.refmec.mechanicsId){
+      history.push("/list-mechanic");
+    }
 
     // reset the form
     setMechanicsName("");
@@ -111,7 +116,7 @@ export function MechanicUpsert() {
       <div className="col-3 col-md-3 d-none d-md-block"></div>
       <div className="col-12 col-md-6">
         <h3 className="alert alert-warning">
-          {state.mechanic.refmec.mechanicsId ? "Update Mechanic" : "Create Mechanic"}
+          {state.mechanic.refmec.mechanicsId ? "Update Mechanic!!!" : "Create Mechanic!!!"}
         </h3>
 
         {/** BELOW THESE TWO TAGS MUST BE CONDITIOANL */}
