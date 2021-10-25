@@ -9,6 +9,5 @@ const rootReducer = combineReducers({
   mechanic: MechanicReducer,
 });
 
-// const store = createStore(rootReducer);
 const store = createStore(rootReducer, applyMiddleware(thunk));
 export { store };
